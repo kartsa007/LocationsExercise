@@ -2,9 +2,14 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <h1>{{title | firstcharuppercase}}</h1>
+    <p>Today is {{dateVar}}</p>
+    <p>By clicking the map you can add markers to it.</p>
+    <app-locations></app-locations>
+  `
 })
 export class AppComponent {
-  title = 'app';
+  title = 'locations-app';
+  dateVar = new Date().toLocaleDateString('fi');
 }

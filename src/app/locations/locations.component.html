@@ -1,0 +1,28 @@
+<table border="1">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loc of locations; let i = index">
+        <td>{{loc.id}}</td>
+        <td>{{loc.latitude}}</td>
+        <td>{{loc.longitude}}</td>
+        <td><button (click)="deleteLocation(i, loc)">Delete</button></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><input type="number" [(ngModel)]="lat"/></td>
+        <td><input type="number" [(ngModel)]="lng"/></td>
+        <td><button (click)="addLocation(lat, lng)">Add</button></td>
+      </tr>
+    </tbody>
+</table>
+<agm-map (mapClick)="mapClicked($event)" [latitude]="60.192059" [longitude]="24.945831">
+​​  <agm-marker *ngFor="let loc of locations" [latitude]="loc.latitude"
+                [longitude]="loc.longitude"></agm-marker>
+​​</agm-map>
